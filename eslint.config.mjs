@@ -1,9 +1,19 @@
-import pluginJs from "@eslint/js";
-import pluginNode from "eslint-plugin-n";
-import eslintPlugin from "eslint-plugin-eslint-plugin";
+"use strict";
 
-export default [
-    pluginJs.configs.recommended,
-    ...pluginNode.configs["flat/mixed-esm-and-cjs"],
-    eslintPlugin.configs["flat/recommended"]
-];
+module.exports = {
+  root: true,
+  extends: [
+    "eslint:recommended",
+    "plugin:eslint-plugin/recommended",
+    "plugin:node/recommended",
+  ],
+  env: {
+    node: true,
+  },
+  overrides: [
+    {
+      files: ["tests/**/*.js"],
+      env: { mocha: true },
+    },
+  ],
+};
