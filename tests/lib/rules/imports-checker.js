@@ -30,9 +30,10 @@ ruleTester.run("imports-checker", rule, {
 
   invalid: [
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article\\ui\\Article.tsx',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/slices/addCommentFormSlice'",
       errors: [{ message: "В рамках одного слайса все пути должны быть относительными"}],
+      output: "import { addCommentFormActions, addCommentFormReducer } from \"../model/slices/addCommentFormSlice\"",
       options: [
         {
           alias: '@'
@@ -40,8 +41,9 @@ ruleTester.run("imports-checker", rule, {
       ]
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article\\ui\\Article.tsx',
       code: "import { addCommentFormActions, addCommentFormReducer } from 'entities/Article/model/slices/addCommentFormSlice'",
+      output: "import { addCommentFormActions, addCommentFormReducer } from \"../model/slices/addCommentFormSlice\"",
       errors: [{ message: "В рамках одного слайса все пути должны быть относительными"}],
     },
   ],
